@@ -1,0 +1,32 @@
+{
+  "name": "hotbeverage",
+  "version": "0.1.0",
+  "description": "A node static website generator.",
+  "main": "dist/index.js",
+  "author": "Christophe Maillot <christophe.maillot@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mime-types": "^2.1.1",
+    "@types/node": "^20.2.3",
+    "@types/nunjucks": "^3.2.2",
+    "@types/ws": "^8.5.4",
+    "@types/yargs": "^17.0.24",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "dev": "npx tsc --watch"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "chokidar": "^3.5.3",
+    "mime-types": "^2.1.35",
+    "minimatch": "^9.0.1",
+    "nunjucks": "^3.2.4",
+    "postcss": "^8.4.23",
+    "prefixer": "^0.0.3",
+    "tailwindcss": "^3.3.2",
+    "ws": "^8.13.0",
+    "yaml": "^2.3.1",
+    "yargs": "^17.7.2"
+  }
+}
