@@ -54,13 +54,10 @@ export const nunjucksplugin: (opts:Options) => HotBeveragePlugin = (options = {}
                     })
     
                 })
-                console.log("🌀 [nunjucks] awaiting promise")
                 await promise
-                console.log("🌀 [nunjucks] awaiting promise done")
 
             }
         })
     }
-    console.log("🌀 [nunjucks] end of plugin")
 
 }

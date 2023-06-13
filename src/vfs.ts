@@ -122,7 +122,6 @@ export class VFS {
     }
 
     public writeto(dst:string) {
-        console.log("writeto()")
         for (let item of this.items) {
             let fullpath = path.join("./build", item.name)
             let dir = path.dirname(fullpath)
