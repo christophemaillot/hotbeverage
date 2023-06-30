@@ -9,7 +9,7 @@ export interface Options {
     pattern?: string[],
     provider?: (data:HotBeverageData) => HotBeverageData,
     templatesPath? : string,
-    extensions?: ((env:nunjucks.Environment, data:HotBeverageData, basedir:string, vfs:VFS) => void) []
+    extensions?: ((env:nunjucks.Environment, data:HotBeverageData, basedir:string, vfs:VFS, cache:Record<string, any>) => void) []
 
 }
 
@@ -30,7 +30,7 @@ export const nunjucksplugin: (opts:Options) => HotBeveragePlugin = (options = {}
     const env = nunjucks.configure(path.join(ctx.basedir, opts.templatesPath))
 
     for (let extension of opts.extensions) {
-        extension(env, context, ctx.basedir, ctx.vfs)
+        extension(env, context, ctx.basedir, ctx.vfs, ctx.cache)
     }
 
     for (const p of opts.pattern) {

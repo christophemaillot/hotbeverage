@@ -8,12 +8,14 @@ import * as yargs from 'yargs'
 
 import { VFS } from "./vfs"
 import { LiveReloadServer } from './livereload'
+import { Cache } from './cache'
 
 
 export interface HotBeverageContext {
     basedir:string,
     vfs:VFS,
     data:HotBeverageData,
+    cache:Cache,
 }
 
 export interface HotBeverageOptions {
@@ -70,6 +72,9 @@ export class HotBeverage {
 
     // ordered list of plugins
     private plugins: HotBeveragePlugin[] = []
+
+    // a general purpose cache instance, passed to every plugins
+    private cache:Cache = new Cache()
 
     /**
      * Initialize a HotBeverage instance with default options.
@@ -138,6 +143,7 @@ export class HotBeverage {
             vfs:this.vfs, 
             data:this.data,
             basedir:this.basedir,
+            cache:this.cache,
         }
         for (let plugin of this.plugins) {
             let res = plugin(ctx)

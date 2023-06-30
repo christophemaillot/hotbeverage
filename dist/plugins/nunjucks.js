@@ -51,7 +51,7 @@ const nunjucksplugin = (options = {}) => (ctx) => __awaiter(void 0, void 0, void
     const context = Object.assign({}, data);
     const env = nunjucks.configure(path_1.default.join(ctx.basedir, opts.templatesPath));
     for (let extension of opts.extensions) {
-        extension(env, context, ctx.basedir, ctx.vfs);
+        extension(env, context, ctx.basedir, ctx.vfs, ctx.cache);
     }
     for (const p of opts.pattern) {
         yield ctx.vfs.glob(p, (vfs, item) => __awaiter(void 0, void 0, void 0, function* () {
@@ -73,12 +73,9 @@ const nunjucksplugin = (options = {}) => (ctx) => __awaiter(void 0, void 0, void
                         }
                     });
                 });
-                console.log("🌀 [nunjucks] awaiting promise");
                 yield promise;
-                console.log("🌀 [nunjucks] awaiting promise done");
             }
         }));
     }
-    console.log("🌀 [nunjucks] end of plugin");
 });
 exports.nunjucksplugin = nunjucksplugin;

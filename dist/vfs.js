@@ -116,7 +116,6 @@ class VFS {
         return filename;
     }
     writeto(dst) {
-        console.log("writeto()");
         for (let item of this.items) {
             let fullpath = path_1.default.join("./build", item.name);
             let dir = path_1.default.dirname(fullpath);

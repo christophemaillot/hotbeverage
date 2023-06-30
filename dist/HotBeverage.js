@@ -41,6 +41,7 @@ const chokidar = __importStar(require("chokidar"));
 const yargs = __importStar(require("yargs"));
 const vfs_1 = require("./vfs");
 const livereload_1 = require("./livereload");
+const cache_1 = require("./cache");
 var walk = function (dir, root = null) {
     if (root == null) {
         root = dir;
@@ -78,6 +79,8 @@ class HotBeverage {
         this.basedir = path.resolve(".");
         // ordered list of plugins
         this.plugins = [];
+        // a general purpose cache instance, passed to every plugins
+        this.cache = new cache_1.Cache();
         this.options = {
             port: 4000,
             interface: "127.0.0.1",
@@ -134,6 +137,7 @@ class HotBeverage {
                 vfs: this.vfs,
                 data: this.data,
                 basedir: this.basedir,
+                cache: this.cache,
             };
             for (let plugin of this.plugins) {
                 let res = plugin(ctx);
