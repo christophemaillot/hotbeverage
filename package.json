@@ -1,6 +1,6 @@
 {
   "name": "hotbeverage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A node static website generator.",
   "main": "dist/index.js",
   "author": "Christophe Maillot <christophe.maillot@gmail.com>",
@@ -11,10 +11,13 @@
     "@types/nunjucks": "^3.2.2",
     "@types/ws": "^8.5.4",
     "@types/yargs": "^17.0.24",
+    "npmignore": "^0.3.0",
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "dev": "npx tsc --watch"
+    "dev": "npx tsc --watch",
+    "build": "npx tsc",
+    "prepack": "npmignore --auto"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
@@ -28,5 +31,12 @@
     "ws": "^8.13.0",
     "yaml": "^2.3.1",
     "yargs": "^17.7.2"
+  },
+  "publishConfig": {
+    "ignore": [
+        "!dist/",
+        "src/",
+        "test/"
+    ]
   }
 }
